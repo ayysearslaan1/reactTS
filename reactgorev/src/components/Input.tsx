@@ -1,12 +1,18 @@
 import React from 'react'
 
-const Input=() => {
+type Iprops ={
+    todo:string
+    setTodo: React.Dispatch<React.SetStateAction<string>>,
+    addMessage:() => void
+}
+
+const Input:React.FC<Iprops>=({todo,setTodo,addMessage}) => {
     return(
         <div>
-            <input type="text" placeholder='Ad' />
-            <input type="text" placeholder='soyad' />
-            <input type="text" placeholder='numara' />
-            <button>ekle</button>
+            <input value={todo} onChange={e=>setTodo(e.target.value)} type="text" placeholder='Ad' />
+            <input  value={todo} onChange={e=>setTodo(e.target.value)} type="text" placeholder='soyad' />
+            <input value={todo} onChange={e=>setTodo(e.target.value)} type="text" placeholder='numara' />
+            <button onClick={addMessage}>ekle</button>
         </div>
     )
 }
